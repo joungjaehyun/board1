@@ -1,0 +1,34 @@
+## 테이블 생성
+create table tbl_board1(
+	bno int auto_increment primary key,
+	title varchar(100) not null,
+	content varchar(1000) not null,
+	writer varchar(50) not null,
+	regdate timestamp default now(),
+	moddate timestamp default now()
+)
+;
+## 1개의 로우값 넣는 쿼리
+insert into tbl_board1 (title,content,writer) values (#{title},#{content},#{writer})
+
+## 더미데이터 넣기 
+insert into tbl_board1 (title,content,writer) (select title,content,writer from tbl_board1);
+
+## select 쿼리
+select * from tbl_board1 order by bno desc;
+## select 1개의 객체
+select * from tbl_board1 where bno= #{bno}
+
+## update 하는 쿼리
+
+update tbl_board1 set 
+title = concat(title, (bno%10)),
+content = concat(content, (bno%10)),
+writer = concat(writer,(bno%10))
+where bno = #{bno}
+;
+
+# delete 하는 쿼리
+delete from tbl_board1 where bno =#{bno}
+
+
