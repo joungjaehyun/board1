@@ -35,7 +35,7 @@
             <td>[[${board.bno}]]</td>
             <td class="boardTD" th:data-tno="${board.tno}">[[${board.title}]]</td>
             <td>[[${board.writer}]]</td>
-            <td>[[${board.dueDate}]]</td>
+            <td>[[${board.regdate}]]</td>
             <a href = "/board/regist">등록</a>
           </tr>
 
@@ -55,7 +55,7 @@
       </div>
     
     <!-- /.card -->
-      <form class="actionForm" action="/todo/list" method="get">
+      <form class="actionForm" action="/board/list" method="get">
         <input type="hidden" name="page" value="3">
         <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
       </form>
